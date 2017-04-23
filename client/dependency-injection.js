@@ -1,4 +1,3 @@
-//document.getElementById("myBtn").addEventListener("click", displayDate)
 const initWatcher = () => {
     let di = {};
 
