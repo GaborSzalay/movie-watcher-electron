@@ -1,4 +1,4 @@
-watcher.define('EpisodePathController', (() => {
+module.exports = (() => {
     const episodePath = document.getElementById("episode-path");
 
     const handleEpisodeInputChange = (event) => {
@@ -16,4 +16,4 @@ watcher.define('EpisodePathController', (() => {
     return {
         init: init
     }
-})());
+})();

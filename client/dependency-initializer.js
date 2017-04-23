@@ -1,1 +1,0 @@
-watcher.require('EpisodePathController').init();
