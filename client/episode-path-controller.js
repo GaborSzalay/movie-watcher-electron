@@ -1,7 +1,16 @@
 watcher.define('EpisodePathController', (() => {
+    const episodePath = document.getElementById("episode-path");
+
+    const handleEpisodeInputChange = (event) => {
+        const files = event.path[0].files;
+
+        if (files.length > 0) {
+            console.log(files[0]);
+        }
+    };
 
     const init = () => {
-        console.log('EpisodePathController called.');
+        episodePath.addEventListener("change", handleEpisodeInputChange)
     };
 
     return {
