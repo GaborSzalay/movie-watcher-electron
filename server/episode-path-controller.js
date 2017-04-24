@@ -11,7 +11,9 @@ module.exports = (() => {
         if (files.length > 0) {
             vlcPathPromise = storage.getVlcPath();
             vlcPathPromise.then((vlcPath) => {
-                child_process.execFile(vlcPath, [files[0].path]);
+                child_process.execFile(vlcPath, [files[0].path, 'vlc://quit'], () => {
+                    console.log('vlc terminated');
+                });
                 console.log(files[0]);
             });
         }
