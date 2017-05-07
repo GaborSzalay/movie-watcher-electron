@@ -18,6 +18,15 @@ const getPossibleDirs = (filePath, _directories) => {
     return directories;
 }
 
+const registerOptionListeners = () => {
+    const inputs = rootDirectory.getElementsByTagName('input');
+    for (let counter = 0; counter < inputs.length; counter++) {
+        inputs[counter].addEventListener('change', () => {
+            console.log(inputs[counter]);
+        });
+    }
+}
+
 const handleEpisodeInputChange = (event) => {
     const files = event.path[0].files;
     let vlcPathPromise;
@@ -29,11 +38,12 @@ const handleEpisodeInputChange = (event) => {
             options = options.concat(`<label><input type="radio" name="option" value="${index}">${directory}</label>`);
         });
         rootDirectory.innerHTML = options;
+        registerOptionListeners();
     }
 };
 
 const init = () => {
-    episodePath.addEventListener("change", handleEpisodeInputChange)
+    episodePath.addEventListener('change', handleEpisodeInputChange)
 };
 
 module.exports = {
