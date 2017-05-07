@@ -3,21 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <title>Movie Watcher</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
     </head>
     <body>
         <nav>
-          <a href="/vlc-setup/">VCL Setup</a> |
-          <a href="/new-series/">New Series</a> |
-          <a href="/watch-series/">Watch Series</a>
+          <a href="#vlc-setup">VCL Setup</a> |
+          <a href="#new-series">New Series</a> |
+          <a href="#watch-series">Watch Series</a>
         </nav>
 
         <main>
-            <section id="vlc-selector">
+            <section id="vlc-setup" class="hidden">
                 Select VLC player:<br>
                 <input type="file" id="vlc-path" name="vlc-path"><br>
                 <span id="vlc-path-container"></span>
             </section>
-            <section id="episode-selector">
+
+            <section id="new-series" class="hidden">
+                <h1>Add new series</h1>
+            </section>
+
+            <section id="watch-series" class="default-visible hidden">
                 Select an episode of your series:<br>
                 <input type="file" id="episode-path" name="episode-path"><br>
             </section>
