@@ -1,4 +1,7 @@
 node_modules
+css/*.css
+css/*.css.map
+.sass-cache
 .idea
 .vscode
 .vs
