@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Movie Watcher</title>
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-    </head>
-    <body>
-        <nav>
-          <a href="#vlc-setup">VCL Setup</a> |
-          <a href="#new-series">New Series</a> |
-          <a href="#watch-series">Watch Series</a>
-        </nav>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Watcher</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <nav>
+      <a href="#vlc-setup">VLC Setup</a> |
+      <a href="#new-series">New Series</a> |
+      <a href="#watch-series">Watch Series</a>
+  </nav>
 
-        <main>
-            <section id="vlc-setup" class="hidden">
-                Select VLC player:<br>
-                <input type="file" id="vlc-path" name="vlc-path"><br>
-                <span id="vlc-path-container"></span>
-            </section>
+  <main>
+    <section id="vlc-setup" class="hidden">
+        <label for="vlc-path">Select VLC player:</label>
+        <input type="file" id="vlc-path" name="vlc-path"><br>
+        <span id="vlc-path-container"></span>
+    </section>
 
-            <section id="new-series" class="hidden">
-                <h1>Add new series</h1>
-            </section>
+    <section id="new-series" class="default-visible hidden">
+        <h1>Add new series</h1>
+        <form>
+            <label for="series-name">Series name</label>
+            <input type="text" id="series-name" name="series-name">
+            <label for="episode-path">Select an episode of your series</label>
+            <input type="file" id="episode-path" name="episode-path"><br>
+            <div id="root-directory"></div>
+      </form>
+  </section>
 
-            <section id="watch-series" class="default-visible hidden">
-                Select an episode of your series:<br>
-                <input type="file" id="episode-path" name="episode-path"><br>
-            </section>
-        </main>
-    </body>
+  <section id="watch-series" class="hidden">
+    <h1>Watch series</h1>
+</section>
+</main>
+</body>
 
-    <script>
-      require('./server/renderer.js')
-    </script>
+<script>
+  require('./server/renderer.js')
+</script>
 </html>

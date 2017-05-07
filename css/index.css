@@ -1,4 +1,7 @@
 .hidden {
   display: none; }
 
+#new-series label {
+  display: block; }
+
 /*# sourceMappingURL=index.css.map */
