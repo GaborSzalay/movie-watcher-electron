@@ -7,6 +7,10 @@ const getDir = (filePath) => {
     return path.dirname(filePath.toString());
 }
 
+const addFilesRecursively = (rootDirectory) => {
+    console.log(rootDirectory);
+}
+
 const getPossibleDirs = (filePath, _directories) => {
     const directories = _directories ? _directories : [];
     const currentDirectory = getDir(filePath);
@@ -22,7 +26,7 @@ const registerOptionListeners = () => {
     const inputs = rootDirectory.getElementsByTagName('input');
     for (let counter = 0; counter < inputs.length; counter++) {
         inputs[counter].addEventListener('change', () => {
-            console.log(inputs[counter]);
+            addFilesRecursively(inputs[counter]);
         });
     }
 }
