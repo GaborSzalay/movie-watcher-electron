@@ -1,5 +1,4 @@
 const episodePath = document.getElementById("episode-path");
-const rootDirectory = document.getElementById("root-directory");
 
 const handleEpisodeInputChange = (event) => {
     const files = event.path[0].files;
