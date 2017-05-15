@@ -1,31 +1,32 @@
 {
-    "name": "movie-watcher-electron",
-    "version": "0.0.1",
-    "description": "Electron application to track history of watched movies and series",
-    "main": "main.js",
-    "scripts": {
-        "start": "electron ."
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/GaborSzalay/movie-watcher-electron.git"
-    },
-    "keywords": [
-        "series",
-        "movie",
-        "watcher",
-        "electron"
-    ],
-    "author": "Gabor Szalay",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/GaborSzalay/movie-watcher-electron/issues"
-    },
-    "homepage": "https://github.com/GaborSzalay/movie-watcher-electron#readme",
-    "devDependencies": {
-        "electron": "~1.6.2"
-    },
-    "dependencies": {
-        "electron-json-storage": "^3.0.5"
-    }
+  "name": "movie-watcher-electron",
+  "version": "0.0.1",
+  "description": "Electron application to track history of watched movies and series",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaborSzalay/movie-watcher-electron.git"
+  },
+  "keywords": [
+    "series",
+    "movie",
+    "watcher",
+    "electron"
+  ],
+  "author": "Gabor Szalay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GaborSzalay/movie-watcher-electron/issues"
+  },
+  "homepage": "https://github.com/GaborSzalay/movie-watcher-electron#readme",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  },
+  "dependencies": {
+    "electron-json-storage": "^3.0.5",
+    "recursive-readdir-sync": "^1.0.6"
+  }
 }
