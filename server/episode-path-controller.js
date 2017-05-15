@@ -1,7 +1,9 @@
 const readdir = require('recursive-readdir-sync');
 const episodePath = document.getElementById("episode-path");
+const seriesName = document.getElementById("series-name");
+const storage = require.main.require('./server/watcher-storage.js');
 
-const handleEpisodeInputChange = (event) => {
+const handleEpisodeInputChange = async (event) => {
     const filesInput = event.path[0].files;
     let files;
 
@@ -13,13 +15,17 @@ const handleEpisodeInputChange = (event) => {
         } catch (err) {
             if (err.errno === 34) {
                 console.log('Path does not exist');
-            } else {
-                throw err;
             }
+            throw err;
         }
     }
 
-    console.log(files);
+    const movies = files.filter(file => {
+        return file.includes('.avi') || file.includes('.mp4');
+    });
+    console.log(movies);
+    const seriesList = await storage.getObject('seriesList');
+    seriesList.data = {name: seriesName, files: movies};
 };
 
 const init = () => {

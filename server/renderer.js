@@ -3,5 +3,6 @@
 // All of the Node.js APIs are available in this process.
 
 require.main.require('./server/router.js').init();
+require.main.require('./server/series-list-renderer.js').init();
 require.main.require('./server/vlc-path-controller.js').init();
 require.main.require('./server/episode-path-controller.js').init();
