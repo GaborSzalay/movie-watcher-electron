@@ -1,14 +1,18 @@
 const storage = require('electron-json-storage');
 
-const setVlcPath = (value) => {
-    storage.set('vlc-settings', value, (error) => {
+const setObject = (objectName, value) => {
+    storage.remove(objectName, function(error) {
+        if (error) throw error;
+    });
+
+    storage.set(objectName, value, (error) => {
         if (error) throw error;
     });
 };
 
-const getVlcPath = () => {
+const getObject = (objectName) => {
     return new Promise((resolve, reject) => {
-        storage.get('vlc-settings', (error, data) => {
+        storage.get(objectName, (error, data) => {
             if (error) throw error;
 
             if (Object.keys(data).length === 0 && data.constructor === Object) {
@@ -20,52 +24,25 @@ const getVlcPath = () => {
     });
 };
 
-const getObject = (objectName) => {
-    return new Promise((mainResolve, mainReject) => {
-        const objectExists = new Promise((resolve, reject) => {
-            storage.get(objectName, (error, data) => {
-                if (error) throw error;
-
-                if (Object.keys(data).length === 0 && data.constructor === Object) {
-                    reject();
-                }
-
-                resolve(data);
-            });
-        });
-        objectExists.then((data) => {
-            mainResolve({
-                objectName: objectName,
-                data: data
-            });
-        }).catch(() => {
-            new Promise((resolve, reject) => {
-                storage.set(objectName, {}, (error) => {
-                    if (error) throw error;
-                    resolve();
-                });
-            }).then(() => {
-                mainResolve({
-                    objectName: objectName,
-                    data: {}
-                });
-            });
-        });
-    });
+const setVlcPath = (value) => {
+    setObject('vlc-settings', value);
 };
 
-const store = (object) => {
-    return new Promise((resolve, reject) => {
-        storage.set(object.objectName, object.data, (error) => {
-            if (error) throw error;
-            resolve();
-        });
-    });
+const getVlcPath = () => {
+    return getObject('vlc-settings');
+};
+
+const setSeriesList = (value) => {
+    setObject('series-list', value);
+};
+
+const getSeriesList = () => {
+    return getObject('series-list');
 };
 
 module.exports = {
     setVlcPath,
     getVlcPath,
-    getObject,
-    store
+    setSeriesList,
+    getSeriesList
 }
