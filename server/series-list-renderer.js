@@ -1,9 +1,15 @@
 const storage = require.main.require('./server/watcher-storage.js');
+const child_process = require('child_process');
 
 const renderSeriesList = async () => {
     const actualSeriesList = document.getElementById('actual-series-list');
     const seriesList = await storage.getSeriesList();
+    const vlcPath = await storage.getVlcPath();
     actualSeriesList.innerHTML = '<div>' + seriesList.name + '</div>';
+
+    child_process.execFile(vlcPath, [seriesList.series[0], 'vlc://quit'], () => {
+        console.log('vlc terminated');
+    });
   };
 
 const init = () => {
