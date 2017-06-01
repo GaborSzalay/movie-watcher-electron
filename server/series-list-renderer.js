@@ -7,8 +7,12 @@ const renderSeriesList = async () => {
     const vlcPath = await storage.getVlcPath();
     actualSeriesList.innerHTML = '<div>' + seriesList.name + '</div>';
 
-    child_process.execFile(vlcPath, [seriesList.series[0], 'vlc://quit'], () => {
-        console.log('vlc terminated');
+    child_process.execFile(vlcPath, [seriesList.series[0], 'vlc://quit'], (arg1, arg2, vlcResponse) => {
+        if (vlcResponse.includes("command `quit")) {
+            console.log('vlc terminated by quit');
+        } else {
+            console.log('vlc terminated by you');
+        }
     });
   };
 
