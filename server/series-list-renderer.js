@@ -1,5 +1,5 @@
 const storage = require.main.require('./server/watcher-storage.js');
-const child_process = require('child_process');
+const vlcTaskRunner = require.main.require('./server/vlc-task-runner.js');
 
 const renderSeriesList = async () => {
     const actualSeriesList = document.getElementById('actual-series-list');
@@ -7,13 +7,14 @@ const renderSeriesList = async () => {
     const vlcPath = await storage.getVlcPath();
     actualSeriesList.innerHTML = '<div>' + seriesList.name + '</div>';
 
-    child_process.execFile(vlcPath, [seriesList.series[0], 'vlc://quit'], (arg1, arg2, vlcResponse) => {
-        if (vlcResponse.includes("command `quit")) {
-            console.log('vlc terminated by quit');
-        } else {
-            console.log('vlc terminated by you');
-        }
-    });
+    for (let index = 0; index < seriesList.series.length; index++) {
+        const element = seriesList.series[index];
+        const executionResult = await vlcTaskRunner.openVlc(element);
+        
+        if (executionResult.closedByUser) {
+            return;
+        }    
+    }
   };
 
 const init = () => {

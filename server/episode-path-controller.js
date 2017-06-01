@@ -24,7 +24,7 @@ const handleEpisodeInputChange = async (event) => {
     }
 
     const movies = files.filter(file => {
-        return file.includes('.avi') || file.includes('.mp4');
+        return file.includes('.avi') || file.includes('.mp4') || file.includes('.mkv');
     });
     await storage.setSeriesList({
         name: seriesName.value,

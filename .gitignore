@@ -7,3 +7,4 @@ node_modules
 *-compiled.js.map
 npm-debug.log
 yarn.lock
+npm-debug.log*
