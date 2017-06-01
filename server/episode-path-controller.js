@@ -9,7 +9,6 @@ const handleEpisodeInputChange = async (event) => {
 
     if (filesInput.length > 0) {
         const filePath = filesInput[0].path;
-        console.log(filePath);
         try {
             files = readdir(filePath);
         } catch (err) {
@@ -18,6 +17,10 @@ const handleEpisodeInputChange = async (event) => {
             }
             throw err;
         }
+    }
+
+    if (!files) {
+        return;
     }
 
     const movies = files.filter(file => {

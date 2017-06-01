@@ -1,13 +1,26 @@
 const storage = require('electron-json-storage');
 
-const setObject = (objectName, value) => {
-    storage.remove(objectName, function(error) {
-        if (error) throw error;
+const removeObject = (objectName, value) => {
+    return new Promise((resolve, reject) => {
+        storage.remove(objectName, function(error) {
+            if (error) throw error;
+            resolve();
+        });
     });
+};
 
-    storage.set(objectName, value, (error) => {
-        if (error) throw error;
-    });
+const setObject = (objectName, value) => {
+    return new Promise((resolve, reject) => {
+        storage.set(objectName, value, (error) => {
+            if (error) throw error;
+            resolve();
+        });
+    })
+};
+
+const updateObject = async (objectName, value) => {
+    await removeObject(objectName, value);
+    await setObject(objectName, value);
 };
 
 const getObject = (objectName) => {
@@ -24,20 +37,20 @@ const getObject = (objectName) => {
     });
 };
 
-const setVlcPath = (value) => {
-    setObject('vlc-settings', value);
+const setVlcPath = async (value) => {
+    await updateObject('vlc-settings', value);
 };
 
-const getVlcPath = () => {
-    return getObject('vlc-settings');
+const getVlcPath = async () => {
+    return await getObject('vlc-settings');
 };
 
-const setSeriesList = (value) => {
-    setObject('series-list', value);
+const setSeriesList = async (value) => {
+    await updateObject('series-list', value);
 };
 
-const getSeriesList = () => {
-    return getObject('series-list');
+const getSeriesList = async () => {
+    return await getObject('series-list');
 };
 
 module.exports = {
