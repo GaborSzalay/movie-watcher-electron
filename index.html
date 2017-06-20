@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <title>Movie Watcher</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script>
+      require('babel-register');
+      require('./scripts/main');
+      require('./server/renderer.js');
+    </script>
 </head>
 <body>
+    <div id="root"></div>
     <nav>
       <a href="#vlc-setup">VLC Setup</a> |
       <a href="#new-series">New Series</a> |
@@ -40,7 +46,4 @@
 </main>
 </body>
 
-<script>
-  require('./server/renderer.js')
-</script>
 </html>
