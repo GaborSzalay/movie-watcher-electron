@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from '../views/main.jsx';
+import { BrowserRouter } from 'react-router-dom'
+import App from '../views/app.jsx';
 
 window.onload = function () {
     ReactDOM.render(
-        <Main />,
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>,
         document.getElementById('root')
     );
-
 }
